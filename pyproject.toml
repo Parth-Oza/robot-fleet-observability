@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "robot-fleet-observability"
+version = "0.1.0"
+description = "Dependency-free fleet health scoring and a tiny telemetry API for synthetic robot data"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Parth Oza"}]
+keywords = ["robotics", "fleet-management", "observability", "telemetry", "autonomy"]
+
+[project.scripts]
+fleet-observability = "robot_fleet_observability.api:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
