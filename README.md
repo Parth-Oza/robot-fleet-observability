@@ -77,3 +77,7 @@ docs/ARCHITECTURE.md                        Design, contracts, and production pa
 - Make demonstration data unmistakably synthetic.
 
 See [Architecture](docs/ARCHITECTURE.md), [Contributing](CONTRIBUTING.md), and [Security](SECURITY.md).
+
+## Contact
+
+For professional opportunities and technical discussions: [ozaparthu055@gmail.com](mailto:ozaparthu055@gmail.com) · [Portfolio](https://parthoza.net) · [LinkedIn](https://www.linkedin.com/in/oza-parth)
