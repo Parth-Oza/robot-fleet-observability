@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title description">
+  <title id="title">Synthetic robot fleet Prometheus dashboard</title>
+  <desc id="description">Four dashboard panels visualize availability, mission latency, faults, and safety stops for three synthetic robots.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="7" stdDeviation="7" flood-color="#020617" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="675" fill="url(#background)"/>
+  <circle cx="1115" cy="68" r="120" fill="#14b8a6" opacity="0.08"/>
+  <text x="50" y="58" fill="#f8fafc" font-family="Inter,Arial,sans-serif" font-size="27" font-weight="700">Robot Fleet Operations</text>
+  <text x="50" y="88" fill="#94a3b8" font-family="Inter,Arial,sans-serif" font-size="15">Synthetic snapshot · Prometheus exporter example</text>
+  <rect x="977" y="45" width="173" height="38" rx="19" fill="#064e3b" stroke="#10b981"/>
+  <circle cx="1001" cy="64" r="6" fill="#34d399"/>
+  <text x="1017" y="69" fill="#d1fae5" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="600">Exporter healthy</text>
+
+  <g filter="url(#shadow)">
+    <rect x="50" y="125" width="535" height="220" rx="14" fill="#1e293b" stroke="#334155"/>
+    <rect x="615" y="125" width="535" height="220" rx="14" fill="#1e293b" stroke="#334155"/>
+    <rect x="50" y="375" width="535" height="240" rx="14" fill="#1e293b" stroke="#334155"/>
+    <rect x="615" y="375" width="535" height="240" rx="14" fill="#1e293b" stroke="#334155"/>
+  </g>
+
+  <text x="75" y="162" fill="#e2e8f0" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="600">Robot availability</text>
+  <text x="75" y="190" fill="#94a3b8" font-family="ui-monospace,monospace" font-size="12">robot_fleet_robot_available</text>
+  <text x="75" y="270" fill="#f8fafc" font-family="Inter,Arial,sans-serif" font-size="64" font-weight="700">2 / 3</text>
+  <text x="76" y="311" fill="#34d399" font-family="Inter,Arial,sans-serif" font-size="15">● robot-01</text>
+  <text x="240" y="311" fill="#f87171" font-family="Inter,Arial,sans-serif" font-size="15">● robot-02</text>
+  <text x="404" y="311" fill="#34d399" font-family="Inter,Arial,sans-serif" font-size="15">● robot-03</text>
+
+  <text x="640" y="162" fill="#e2e8f0" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="600">Mission latency</text>
+  <text x="640" y="190" fill="#94a3b8" font-family="ui-monospace,monospace" font-size="12">robot_fleet_mission_latency_seconds</text>
+  <line x1="670" y1="305" x2="1108" y2="305" stroke="#475569"/>
+  <rect x="700" y="252" width="78" height="53" rx="4" fill="#2dd4bf"/>
+  <rect x="835" y="300" width="78" height="5" rx="2" fill="#64748b"/>
+  <rect x="970" y="214" width="78" height="91" rx="4" fill="#fb923c"/>
+  <text x="719" y="330" fill="#94a3b8" font-family="Inter,Arial,sans-serif" font-size="13">01</text>
+  <text x="854" y="330" fill="#94a3b8" font-family="Inter,Arial,sans-serif" font-size="13">02</text>
+  <text x="989" y="330" fill="#94a3b8" font-family="Inter,Arial,sans-serif" font-size="13">03</text>
+  <text x="705" y="245" fill="#ccfbf1" font-family="Inter,Arial,sans-serif" font-size="12">118 ms</text>
+  <text x="975" y="207" fill="#ffedd5" font-family="Inter,Arial,sans-serif" font-size="12">426 ms</text>
+
+  <text x="75" y="412" fill="#e2e8f0" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="600">Cumulative faults</text>
+  <text x="75" y="440" fill="#94a3b8" font-family="ui-monospace,monospace" font-size="12">robot_fleet_faults_total</text>
+  <polyline points="80,570 145,570 210,560 275,560 340,530 405,520 470,485 550,470" fill="none" stroke="#f59e0b" stroke-width="4"/>
+  <path d="M80 570 L145 570 L210 560 L275 560 L340 530 L405 520 L470 485 L550 470 L550 585 L80 585 Z" fill="#f59e0b" opacity="0.12"/>
+  <line x1="80" y1="585" x2="550" y2="585" stroke="#475569"/>
+  <text x="80" y="602" fill="#64748b" font-family="Inter,Arial,sans-serif" font-size="12">12:00</text>
+  <text x="510" y="602" fill="#64748b" font-family="Inter,Arial,sans-serif" font-size="12">12:15</text>
+  <text x="483" y="456" fill="#fde68a" font-family="Inter,Arial,sans-serif" font-size="13">5 total</text>
+
+  <text x="640" y="412" fill="#e2e8f0" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="600">Safety stops</text>
+  <text x="640" y="440" fill="#94a3b8" font-family="ui-monospace,monospace" font-size="12">robot_fleet_safety_stops_total</text>
+  <text x="640" y="530" fill="#f8fafc" font-family="Inter,Arial,sans-serif" font-size="64" font-weight="700">2</text>
+  <rect x="755" y="478" width="350" height="16" rx="8" fill="#334155"/>
+  <rect x="755" y="478" width="175" height="16" rx="8" fill="#fb7185"/>
+  <text x="755" y="523" fill="#cbd5e1" font-family="Inter,Arial,sans-serif" font-size="14">robot-02</text>
+  <text x="1000" y="523" fill="#cbd5e1" font-family="Inter,Arial,sans-serif" font-size="14">robot-03</text>
+  <text x="640" y="590" fill="#94a3b8" font-family="Inter,Arial,sans-serif" font-size="13">Synthetic data only · no production telemetry</text>
+</svg>

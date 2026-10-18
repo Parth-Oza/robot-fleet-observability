@@ -7,6 +7,7 @@ import json
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 from .health import summarize_fleet
+from .metrics import render_prometheus
 from .synthetic import sample_fleet
 
 
@@ -16,13 +17,30 @@ class FleetHandler(BaseHTTPRequestHandler):
             self._write_json({"status": "ok"})
         elif self.path == "/robots":
             self._write_json(summarize_fleet(sample_fleet()))
+        elif self.path == "/metrics":
+            self._write_response(
+                render_prometheus(sample_fleet()).encode("utf-8"),
+                content_type="text/plain; version=0.0.4; charset=utf-8",
+            )
         else:
-            self._write_json({"error": "not_found", "available": ["/health", "/robots"]}, status=404)
+            self._write_json(
+                {"error": "not_found", "available": ["/health", "/robots", "/metrics"]},
+                status=404,
+            )
 
     def _write_json(self, payload: object, status: int = 200) -> None:
         encoded = json.dumps(payload, indent=2).encode("utf-8")
+        self._write_response(encoded, status=status, content_type="application/json; charset=utf-8")
+
+    def _write_response(
+        self,
+        encoded: bytes,
+        *,
+        status: int = 200,
+        content_type: str,
+    ) -> None:
         self.send_response(status)
-        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Type", content_type)
         self.send_header("Content-Length", str(len(encoded)))
         self.end_headers()
         self.wfile.write(encoded)
@@ -37,7 +55,7 @@ def main() -> None:
     parser.add_argument("--port", type=int, default=8080)
     args = parser.parse_args()
     server = ThreadingHTTPServer((args.host, args.port), FleetHandler)
-    print(f"Serving http://{args.host}:{args.port}/robots")
+    print(f"Serving fleet API at http://{args.host}:{args.port} (/robots, /metrics)")
     try:
         server.serve_forever()
     except KeyboardInterrupt:
