@@ -6,7 +6,21 @@
 - `score_sample` evaluates one robot using explicit thresholds and penalties.
 - `summarize_fleet` aggregates status counts, average health, and active missions.
 - `sample_fleet` provides clearly synthetic demonstration input.
+- `render_prometheus` converts a snapshot into deterministic Prometheus 0.0.4 text.
 - `FleetHandler` exposes the current snapshot through a read-only HTTP API.
+
+## Metrics contract
+
+The `/metrics` endpoint exposes four per-robot metric families. Each uses only the bounded `robot_id` label to avoid accidental high-cardinality dimensions such as timestamps or mission IDs.
+
+| Metric | Type | Unit |
+|---|---|---|
+| `robot_fleet_robot_available` | Gauge | Boolean (`0` or `1`) |
+| `robot_fleet_mission_latency_seconds` | Gauge | Seconds |
+| `robot_fleet_faults_total` | Counter | Events |
+| `robot_fleet_safety_stops_total` | Counter | Events |
+
+Samples are sorted by robot ID so snapshots and tests remain reproducible. Label values follow Prometheus escaping rules. Invalid negative counters, negative or non-finite latency, and malformed field types are rejected rather than silently publishing corrupt telemetry.
 
 ## Health model
 
@@ -24,7 +38,7 @@ Scores are clamped to zero. Any critical alert produces critical status; otherwi
 ## Current boundaries
 
 - In-memory synthetic snapshot only.
-- Read-only endpoints.
+- Read-only JSON and Prometheus endpoints.
 - No authentication, persistence, or external integrations.
 - No proprietary metrics, thresholds, identifiers, or operational data.
 

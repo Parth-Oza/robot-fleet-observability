@@ -16,6 +16,10 @@ class FleetSample:
     cpu_pct: float
     latency_ms: float
     mission_active: bool
+    available: bool = True
+    mission_latency_ms: float = 0.0
+    fault_count: int = 0
+    safety_stop_count: int = 0
 
 
 def score_sample(sample: FleetSample) -> dict[str, object]:
